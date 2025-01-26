@@ -21,17 +21,16 @@ public:
             cur=cur->next;
         }
         cur=head;
-        for(int i=0;i<v.size()-1;i++)
+        for(int i=1;i<v.size();i++)
         {
-            for(int j=i+1;j<v.size();j++)
+            int key = v[i];
+            int j = i-1;
+            while(j>=0 && v[j]>key)
             {
-                if(v[i]>v[j])
-                {
-                    t=v[i];
-                    v[i]=v[j];
-                    v[j]=t;
-                }
+                v[j+1] = v[j];
+                j--;
             }
+            v[j+1]=key;
         }
         while(cur!=NULL)
         {
